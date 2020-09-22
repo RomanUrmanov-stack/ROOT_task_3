@@ -74,7 +74,7 @@ Double_t average_x_squared(Double_t *x, Double_t *a)
 
 Int_t task_3()
 {
-    TF1* energy_minimum = new TF1("energy_minimum", dot_product, -2, 2, 0);
+    TF1* energy_minimum = new TF1("energy_minimum", dot_product, -50, 50, 0);
 
     TF1* result = new TF1("result", wave_function_template, -10, 10, 1);
     parameter = energy_minimum->GetMinimumX(5, 50);
@@ -92,13 +92,13 @@ Int_t task_3()
         
         TF1* average_x_squared_func = new TF1("average_x_squared_func", average_x_squared, -10, 10, 0);
 
-        graph->SetPoint(i, U, average_x_squared_func->Eval(parameter));
+        graph->SetPoint(i, U, average_x_squared_func->Eval(5));
         
         //case 1
-        //U += 0.1;
+        U += 0.1;
 
         //case 2
-        //U -= 0.1;
+        // U -= 0.1;
 
         delete average_x_squared_func;
         delete temp;
