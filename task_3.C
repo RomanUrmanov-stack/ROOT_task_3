@@ -74,16 +74,17 @@ Double_t average_x_squared(Double_t *x, Double_t *a)
 
 Int_t task_3()
 {
-    TF1* energy_minimum = new TF1("energy_minimum", dot_product, 5e-10, 50e-10, 0);
+    TF1* energy_minimum = new TF1("energy_minimum", dot_product, 5e-10, 5000e-10, 0);
     energy_minimum->SetNpx(1000);
 
     TF1* result = new TF1("result", wave_function_template, -100e-10, 100e-10, 1);
-    parameter = energy_minimum->GetMinimumX(5e-10, 50e-10); //distance in A
+    parameter = energy_minimum->GetMinimumX(5e-10, 5000e-10); //distance in A
     std::cout << parameter << std::endl;
     result->SetParameter(0, parameter); 
+    std::cout << energy_minimum->Eval(parameter) << std::endl;
 
     result->SetNpx(1000);
-    result->Draw();    
+    energy_minimum->Draw();    
     result->SetLineColor(kBlue);
     
     //third task
