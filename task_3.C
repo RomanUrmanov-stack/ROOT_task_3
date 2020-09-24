@@ -84,7 +84,7 @@ Int_t task_3()
     std::cout << energy_minimum->Eval(parameter) << std::endl;
 
     result->SetNpx(1000);
-    energy_minimum->Draw();    
+    result->Draw();    
     result->SetLineColor(kBlue);
     
     //third task
